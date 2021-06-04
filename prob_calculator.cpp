@@ -36,7 +36,7 @@ void Balls_in (string bal){
         bal.erase(0, erasenum +1);
     }
 }
-void experiment(string expec_balls, int balls_drown, int exper_times){
+int experiment(string expec_balls, int balls_drown, int exper_times){
     vector<string>expec_balls_vec;
     vector<string>balls_random;
         //// placing a - at the end of the string
@@ -95,14 +95,14 @@ void experiment(string expec_balls, int balls_drown, int exper_times){
             }
         }    
 
-        for(int i =0; i < balls_random.size(); i++){
+        /*for(int i =0; i < balls_random.size(); i++){
             cout<< balls_random[i]<< '\t';
         }       
         cout << endl;
         for(int i =0; i < list_expec_balls.size(); i++){
             cout<< list_expec_balls[i]<< '\t';
         }
-        cout << endl;
+        cout << endl;*/
         balls_random.clear();
 
             /// keep count
@@ -110,17 +110,18 @@ void experiment(string expec_balls, int balls_drown, int exper_times){
             BINGO ++;
         }
     }
-    cout << BINGO << endl;
+    return BINGO;
 }  
 public:
-void Run(string start_balls, string want_balls, int Draw, int times){
+float Run(string start_balls, string want_balls, int Draw, int times){
     Balls_in(start_balls);
-    experiment(want_balls, Draw, times);
+    int bingo = experiment(want_balls, Draw, times);
+    return (bingo / times);
 }
 };
 
 int main(){
     Hat hat1, hat2, hat3;
     
-    hat1.Run("green=3-blue=2-red=2-yellow=2","red=2", 5, 2);
+    cout << hat1.Run("green=3-blue=2-red=2-yellow=2","red=2", 5, 2) << endl;
 }
